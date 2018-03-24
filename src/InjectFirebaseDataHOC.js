@@ -7,14 +7,16 @@ const InjectFirebaseDataHOC = (
   renderWhileLoading = false
 ) => (WrappedComponent) => {
   return class extends Component {
-    static displayName = `InjectFirebaseData(${getDisplayName(Component)})`;
+    static displayName = `InjectFirebaseData(${getDisplayName(
+      WrappedComponent
+    )})`;
 
     render = () => (
       <InjectFirebaseData
         firebaseRef={firebaseRef}
         renderWhileLoading={renderWhileLoading}
       >
-        {(props) => <WrappedComponent {...props} />}
+        {props => <WrappedComponent {...props} />}
       </InjectFirebaseData>
     );
   }
