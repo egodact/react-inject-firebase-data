@@ -14,7 +14,7 @@ export default class InjectFirebaseData extends Component {
 
   state = {
     loading: true,
-    data: {},
+    data: null,
     dataKey: null
   };
 
@@ -42,4 +42,4 @@ export default class InjectFirebaseData extends Component {
   };
 }
 
-export InjectFirebaseDataHOC from './InjectFirebaseDataHOC';
+import InjectFirebaseDataHOC from './InjectFirebaseDataHOC';
