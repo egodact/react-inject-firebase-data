@@ -4,7 +4,7 @@ import InjectFirebaseData from './index';
 
 const InjectFirebaseDataHOC = (
   firebaseRef,
-  renderWhileLoading = false
+  renderWhileLoading
 ) => (WrappedComponent) => {
   return class extends Component {
     static displayName = `InjectFirebaseData(${getDisplayName(

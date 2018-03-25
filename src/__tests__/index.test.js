@@ -1,9 +1,11 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import Enzyme, { shallow, render, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import InjectFirebaseData from '../index';
 
+Enzyme.configure({ adapter: new Adapter() });
+
 beforeAll(() => {
-  global.node = null;
   global.fakeRef = {
     on: (path, callback) => callback({ key: 'foo', val: () => 'bar' }),
     off: () => {}
@@ -11,45 +13,32 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  delete global.node;
   delete global.fakeRef;
 });
 
-beforeEach(() => {
-  node = document.createElement('div');
-});
-
-afterEach(() => {
-  unmountComponentAtNode(node);
-});
-
-describe('Component', () => {
+describe('InjectFirebaseData', () => {
   it('renders without crashing', () => {
-    render(
+    const injectFirebaseData = render(
       <InjectFirebaseData firebaseRef={fakeRef}>
         {() => null}
-      </InjectFirebaseData>,
-      node
+      </InjectFirebaseData>
     );
+    expect(injectFirebaseData).toBeDefined();
   });
 
   it('calls its children function with the loaded data & data key', async () => {
     const childSpy = jest.fn().mockReturnValue(null);
-    render(
+    mount(
       <InjectFirebaseData firebaseRef={fakeRef}>
         {childSpy}
-      </InjectFirebaseData>,
-      node,
-      async () => {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        expect(childSpy.mock.calls.length).toBe(1);
-        expect(childSpy.mock.calls[0][0]).toEqual({
-          loading: false,
-          data: 'bar',
-          dataKey: 'foo'
-        });
-      }
+      </InjectFirebaseData>
     );
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    expect(childSpy.mock.calls.length).toBe(1);
+    expect(childSpy.mock.calls[0][0]).toEqual({
+      data: 'bar',
+      dataKey: 'foo'
+    });
   });
 
   it('calls its children function before the data is loaded when renderWhileLoading is true', () => {
@@ -59,19 +48,16 @@ describe('Component', () => {
       off: () => {}
     };
 
-    render(
+    mount(
       <InjectFirebaseData firebaseRef={fakeRef} renderWhileLoading>
         {childSpy}
-      </InjectFirebaseData>,
-      node,
-      () => {
-        expect(childSpy.mock.calls.length).toBe(1);
-        expect(childSpy.mock.calls[0][0]).toEqual({
-          loading: true,
-          data: null,
-          dataKey: null
-        });
-      }
+      </InjectFirebaseData>
     );
+    expect(childSpy.mock.calls.length).toBe(1);
+    expect(childSpy.mock.calls[0][0]).toEqual({
+      loading: true,
+      data: null,
+      dataKey: null
+    });
   });
 });
