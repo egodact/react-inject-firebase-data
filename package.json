@@ -2,6 +2,20 @@
   "name": "react-inject-firebase-data",
   "version": "1.0.0",
   "description": "react-inject-firebase-data React component",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaelklaessen/react-multi-bar-slider.git"
+  },
+  "author": "Rafael Klaessen",
+  "bugs": {
+    "url": "https://github.com/rafaelklaessen/react-multi-bar-slider/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react-component",
+    "react-firebase",
+    "inject-firebase"
+  ],
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -37,12 +51,5 @@
     "nwb": "0.21.x",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  },
-  "author": "",
-  "homepage": "",
-  "license": "MIT",
-  "repository": "",
-  "keywords": [
-    "react-component"
-  ]
+  }
 }

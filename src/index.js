@@ -42,4 +42,4 @@ export default class InjectFirebaseData extends Component {
   };
 }
 
-import InjectFirebaseDataHOC from './InjectFirebaseDataHOC';
+export InjectFirebaseDataHOC from './InjectFirebaseDataHOC';
