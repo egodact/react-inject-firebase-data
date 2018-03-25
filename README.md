@@ -72,4 +72,7 @@ For the Higher-Order Component, this object becomes the wrapped component's prop
 
 #### Building
 `yarn build` or `npm run build` will build the component for publishing to npm and also bundle the demo app.
+
 `yarn clean` or `npm run clean` will delete built resources.
+
+Notice that you'll need to temporarily delete `.babelrc` to be able to build the component (just put it back after you're done building).
