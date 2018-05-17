@@ -22,7 +22,7 @@ export default class InjectFirebaseData extends Component {
     this.props.firebaseRef.on('value', this.handleValueUpdate);
 
   componentWillUnmount = () =>
-    this.props.firebaseRef.off(this.handleValueUpdate);
+    this.props.firebaseRef.off('value', this.handleValueUpdate);
 
   handleValueUpdate = snapshot =>
     this.setState({

@@ -1,3 +1,8 @@
+# Version 1.0.2
+Released 2018-05-17
+
+- Fixed component crashing on unmount
+
 # Version 1.0.1
 Released 2018-03-25
 
