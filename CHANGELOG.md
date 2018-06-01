@@ -1,3 +1,8 @@
+# Version 1.0.3
+Released 2018-06-01
+
+- Fixed Higher-Order Component not passing on props
+
 # Version 1.0.2
 Released 2018-05-17
 

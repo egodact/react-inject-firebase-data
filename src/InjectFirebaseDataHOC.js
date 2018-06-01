@@ -16,7 +16,7 @@ const InjectFirebaseDataHOC = (
         firebaseRef={firebaseRef}
         renderWhileLoading={renderWhileLoading}
       >
-        {props => <WrappedComponent {...props} />}
+        {props => <WrappedComponent {...this.props} {...props} />}
       </InjectFirebaseData>
     );
   }
