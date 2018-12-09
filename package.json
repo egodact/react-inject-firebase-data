@@ -1,6 +1,6 @@
 {
   "name": "react-inject-firebase-data",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "react-inject-firebase-data React component",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "react-display-name": "^0.2.3"
   },
   "peerDependencies": {
-    "firebase": "4.x",
+    "firebase": "4.x || 5.x",
     "react": "16.x"
   },
   "devDependencies": {
